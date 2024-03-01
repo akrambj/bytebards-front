@@ -1,10 +1,10 @@
 import { useState } from "react";
-import Input from "../components/shared/UI/Input";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FaCheckCircle } from "react-icons/fa";
-import GoogleMicrosoftAuth from "../components/home/GoogleMicrosoftAuth";
-import logo from "/imgs/login/logo.png";
+import logo from "/imgs/header/Hoffice.webp";
+import Input from "../../components/UI/Input";
+import GoogleMicrosoftAuth from "../../components/home/auth/GoogleMicrosoftAuth";
 
 const Login = () => {
   const [formData, setFormData] = useState({

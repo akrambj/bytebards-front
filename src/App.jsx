@@ -8,11 +8,11 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/" element={<SharedLayout />}>
             {/* {/* <Route index element={<Home />} /> */}
             {/* <Route path="*" element={<NotFound />} /> */}
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
           </Route>
         </Routes>
       </BrowserRouter>

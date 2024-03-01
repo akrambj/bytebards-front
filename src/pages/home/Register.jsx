@@ -1,7 +1,7 @@
-import FloatingImages from "../components/home/FloatingImages";
-import GoogleMicrosoftAuth from "../components/home/GoogleMicrosoftAuth";
-import RegisterForm from "../components/auth/register/RegisterForm";
 import { Link } from "react-router-dom";
+import FloatingImages from "../../components/home/auth/FloatingImages";
+import RegisterForm from "../../components/home/auth/RegisterForm";
+import GoogleMicrosoftAuth from "../../components/home/auth/GoogleMicrosoftAuth";
 
 const Register = () => {
   return (
