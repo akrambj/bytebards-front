@@ -4,29 +4,29 @@
 
 @import url('https://fonts.cdnfonts.com/css/samsung-sharp-sans');
 
-*{
-  font-family: 'Samsung Sharp Sans', sans-serif;                                              
+* {
+  font-family: 'Samsung Sharp Sans', sans-serif;
 }
 
 @media screen and (max-width: 600px) {
-  html{
+  html {
     font-size: 12px;
   }
 }
 
 @media screen and (min-width: 600px) and (max-width: 1200px) {
-  html{
+  html {
     font-size: 14px;
   }
 }
 
 @media screen and (min-width: 1200px) {
-  html{
+  html {
     font-size: 16px;
   }
 }
 
-  
+
 body {
   overflow-x: hidden;
 }
@@ -85,3 +85,4 @@ body {
     transform: rotate(360deg);
   }
 }
+

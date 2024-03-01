@@ -5,6 +5,11 @@ import Register from "./pages/home/Register";
 import Home from "./pages/home/Home";
 import Avatar from "./pages/home/Avatar";
 import Smtp from "./pages/home/Smtp";
+import ProtectedRoute from "./components/routes/ProtectedRoute";
+import DashboardLayout from "./components/shared/authenticatedShared/DashboardLayout";
+import Projects from "./pages/authenticated/Projects";
+import Project from "./pages/authenticated/Project";
+// import Projects from "./pages/authenticated/Projects";
 
 const App = () => {
   return (
@@ -18,6 +23,31 @@ const App = () => {
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<Home />} />
             {/* <Route path="*" element={<NotFound />} /> */}
+          </Route>
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <DashboardLayout />
+              </ProtectedRoute>
+            }
+          >
+            <Route
+              index
+              element={
+                <ProtectedRoute>
+                  <Projects />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="projects/:projectId"
+              element={
+                <ProtectedRoute>
+                  <Project />
+                </ProtectedRoute>
+              }
+            />
           </Route>
         </Routes>
       </BrowserRouter>
