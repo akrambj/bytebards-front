@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { FaCheckCircle } from "react-icons/fa";
-import logo from "/imgs/header/Hoffice.webp";
+import Loginimage from "/imgs/login/Login.webp";
+import microsoft from "/imgs/hero/microsoft.webp";
+import googlemin from "/imgs/hero/google_min.webp";
 import Input from "../../components/UI/Input";
 import GoogleMicrosoftAuth from "../../components/home/auth/GoogleMicrosoftAuth";
 
@@ -52,70 +53,70 @@ const Login = () => {
   };
   return (
     <section className="w-screen h-screen overflow-hidden">
-      <div className="flex justify-between px-20 w-full h-full">
-        <div className="h-full w-[45%]  flex flex-col  items-center justify-center">
-          <div className="flex flex-col gap-4 items-center">
-            <h2 className="text-[#0B3558] font-bold text-3xl">
-              Access to your account
-            </h2>
-            <p className="text-[#476788] text-base w-[70%] mx-auto text-center">
-              Easily manage your Remote work with our intuitive platform.
-            </p>
-          </div>
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
-            <div
-              className={`${
-                error ? "left-0 opacity-100" : "-left-10 opacity-0"
-              } bg-red-500 absolute w-[300px] transition-all duration-300 top-0 text-white py-2 px-4 `}
-            >
-              {error}
+      <div className="flex justify-between px-[10vw] w-full h-full">
+
+        <div className="h-full w-[30vw] flex flex-col items-center justify-center gap-[4vh]">
+
+          <div className="flex flex-col gap-[5vh]">
+            <div className="flex flex-col gap-[2vh] items-center">
+              <h2 className="text-[2.6rem] font-bold text-Typo text-center">
+                Access to your account
+              </h2>
+              <p className="text-[1.5rem] font-medium text-center w-[30vw] mx-auto text-Gray100">
+                Easily manage your Remote work with our intuitive platform.
+              </p>
             </div>
 
-            <div
-              className={`${
-                created ? "left-0 opacity-100" : "-left-10 opacity-0"
-              } absolute transition-all duration-300 top-0 bg-white drop-shadow-md shadow-md gap-2 py-4 px-10 flex items-center justify-center`}
-            >
-              <FaCheckCircle className="text-[#66DC90]" />
-              <h4 className="text-[#66DC90] font-bold text-sm">
-                You have been logged in
-              </h4>
-            </div>
-            <div className="relative flex flex-col gap-5">
-              <Link
-                to={"/"}
-                className="text-[#006BFF] absolute top-[55%] cursor-pointer z-20 right-[16%] font-bold"
-              >
-                Forget password ?
-              </Link>
-              <Input
-                value={formData.email}
-                name="email"
-                onChange={handleChange}
-                label="E-mail"
-                type="email"
-                placeholder="Email Adress"
-                width="70%"
-                display={"none"}
-              />
-              <Input
-                value={formData.password}
-                name="password"
-                onChange={handleChange}
-                label="Password"
-                type="password"
-                placeholder="Password"
-                width="70%"
-              />
-            </div>
-            <button className=" w-[70%] mx-auto py-3 bg-[#66DC90] rounded-xl text-white font-bold flex justify-center">
+            <form className="flex flex-col gap-[2.5vh]" onSubmit={handleSubmit}>
+              <div className="flex flex-col flex-start w-[100%] gap-[1.5vh]">
+                <p className="font-medium text-Typo">Email</p>
+                  <Input
+                  value={formData.email}
+                  name="email"
+                  onChange={handleChange}
+                  type="email"
+                  placeholder="Email Adress"
+                  width="100%"
+                  display={"none"}
+                />
+                <div className="flex justify-between items-center">
+                  <p className="font-medium text-Typo">Password</p>
+                  <p className="font-medium text-Blue100">Forget Password ?</p>
+                </div> 
+                  <Input
+                  value={formData.password}
+                  name="password"
+                  onChange={handleChange}
+                  label="Password"
+                  type="password"
+                  placeholder="Password"
+                  width="100%"
+                />
+              </div>
+
+            <button className=" w-[100%] mx-auto h-[7vh] bg-Green100 rounded-[24px] text-white font-bold flex justify-center text-[1.5rem] items-center">
               {loading ? <div className="spinner "></div> : "Connexion"}
             </button>
           </form>
+
+          </div>
+
+          <div className="flex items-center justify-center gap-4">
+            <div className="w-[200px] h-[1px] bg-Gray66"></div>
+            <span className="uppercase text-[1rem] text-Gray66">or</span>
+            <div className="w-[200px] h-[1px] bg-Gray66"></div>
+          </div>
+
           <GoogleMicrosoftAuth />
+          <p className="text-[1.2rem] text-Gray100 font-medium">
+          You haven’t an accout ?  
+            <Link className="text-Blue100" to="/register"> Sign up</Link>
+          </p>
+          
         </div>
-        <div className="h-full w-[45%]  flex flex-col justify-center">
-          <img src={logo} className="w-[60%] mx-auto" alt="" />
+
+        <div className="h-full w-[30vw] flex flex-col justify-center">
+          <img src={Loginimage} className="w-[30vw] mx-auto" alt="" />
         </div>
       </div>
     </section>

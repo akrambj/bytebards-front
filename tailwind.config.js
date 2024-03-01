@@ -24,6 +24,13 @@ export default {
           "0 15px 15px rgba(0, 0, 0, 0.02)",
           "0 8px 4px rgba(0, 0, 0, 0.02)",
         ],
+        avatar: [
+          "0 26px 93px rgba(0, 0, 0, 0.0)",
+          "0 24px 60px rgba(0, 0, 0, 0.03)",
+          "0 20px 34px rgba(0, 0, 0, 0.09)",
+          "0 15px 15px rgba(0, 0, 0, 0.15)",
+          "0 8px 4px rgba(0, 0, 0, 0.18)",
+        ],
       },
     },
   },
