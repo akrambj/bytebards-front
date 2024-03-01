@@ -4,7 +4,7 @@ import { FaCheckCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Input from "../../UI/Input";
 
-const RegisterForm = () => {
+const RegisterForm = () => {  
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -28,7 +28,7 @@ const RegisterForm = () => {
     try {
       setLoading(true);
       const res = await axios.post(
-        `https://ghack-backend.onrender.com/auth/register`,
+        `${apiUrl}/auth/register`,
         formData
       );
       console.log(res, "res");
@@ -80,34 +80,43 @@ const RegisterForm = () => {
       >
         <FaCheckCircle className="text-[#66DC90]" />
         <h4 className="text-[#66DC90] font-bold text-sm">
-          Project has been created successfully
+          user has been created successfully
         </h4>
       </div>
       <div className="flex items-center gap-4 justify-center">
-        <Input
-          value={formData.firstName}
-          name="firstName"
-          onChange={handleChange}
-          label="First name"
-          type="text"
-          placeholder="First name"
-          width="100%"
-          display={"none"}
-          disabled={loading}
-        />
-        <Input
-          value={formData.lastName}
-          name="lastName"
-          onChange={handleChange}
-          label="Last name"
-          type="text"
-          placeholder="Last name"
-          width="100%"
-          display={"none"}
-          disabled={loading}
-        />
+        
+        <div className="flex gap-[12px] flex-col w-[49%]">
+          <p className="font-medium text-Typo">First Name</p>
+          <Input
+            value={formData.firstName}
+            name="firstName"
+            onChange={handleChange}
+            label="First name"
+            type="text"
+            placeholder="First name"
+            width="100%"
+            display={"none"}
+            disabled={loading}
+          />              
+          </div>
+          <div className="flex gap-[12px] flex-col w-[49%]">
+            <p className="font-medium text-Typo">Last Name</p>
+            <Input
+            value={formData.lastName}
+            name="lastName"
+            onChange={handleChange}
+            label="Last name"
+            type="text"
+            placeholder="Last name"
+            width="100%"
+            display={"none"}
+            disabled={loading}
+            />         
+          </div>
+        
       </div>
-      <div>
+      <div className="flex gap-[12px] flex-col w-[100%]">
+        <p className="font-medium text-Typo">Email</p>
         <Input
           value={formData.email}
           name="email"
@@ -120,7 +129,8 @@ const RegisterForm = () => {
           disabled={loading}
         />
       </div>
-      <div>
+      <div className="flex gap-[12px] flex-col w-[100%]">
+      <p className="font-medium text-Typo">Password</p>
         <Input
           value={formData.password}
           name="password"
@@ -132,7 +142,15 @@ const RegisterForm = () => {
           disabled={loading}
         />
       </div>
-      <div className="relative">
+      <div className="relative flex gap-[12px] flex-col w-[100%]">
+      <div className="flex justify-between items-center">
+        <p className="font-medium text-Typo">Confirm Password</p>
+        {confirmError && (
+          <div className="bg-red-100 text-red-500 font-medium py-2 px-4 rounded-[24px]">
+            Passwords do not match
+          </div>
+        )}
+      </div>
         <Input
           label="Confirm Password"
           type="password"
@@ -147,18 +165,11 @@ const RegisterForm = () => {
             }
           }}
         />
-        {confirmError && (
-          <div className="absolute -top-2 right-0 bg-red-500 text-white py-2 px-4 rounded-md">
-            Passwords do not match
-          </div>
-        )}
+        
       </div>
-      <button
-        disabled={loading}
-        className=" w-full py-3 bg-[#66DC90] rounded-xl text-white font-bold flex justify-center"
-      >
-        {loading ? <div className="spinner "></div> : "Connexion"}
-      </button>
+      <button className=" w-[100%] mx-auto h-[7vh] bg-Green100 rounded-[24px] text-white font-bold flex justify-center text-[1.5rem] items-center">
+              {loading ? <div className="spinner "></div> : "Connexion"}
+            </button>
     </form>
   );
 };
