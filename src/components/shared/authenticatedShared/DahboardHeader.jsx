@@ -18,6 +18,10 @@ const DashboardHeader = () => {
     { name: "support", link: "/dashboard/support" },
   ];
 
+  const logout = () => {
+    localStorage.removeItem("access_token");
+  };
+
   // Update theIndex when clicking on a NavLink
   const handleNavLinkClick = (index) => {
     setTheIndex(index);
@@ -46,18 +50,18 @@ const DashboardHeader = () => {
           <ul className="flex items-center gap-[5vw]">
             {menuLinks.map((menu, index) => (
               <li key={index} className="">
-              <NavLink
-                to={menu.link}
-                onClick={() => handleNavLinkClick(index)} // Update theIndex on click
-                className={`text-lg capitalize cursor-pointer ${
-                  index === theIndex
-                    ? "text-[#006BFF] font-bold"
-                    : "font-semibold"
-                }  hover:text-[#006BFF] duration-300 transition-all ease-in`}
-              >
-                {menu.name}
-              </NavLink>
-            </li>
+                <NavLink
+                  to={menu.link}
+                  onClick={() => handleNavLinkClick(index)} // Update theIndex on click
+                  className={`text-lg capitalize cursor-pointer ${
+                    index === theIndex
+                      ? "text-[#006BFF] font-bold"
+                      : "font-semibold"
+                  }  hover:text-[#006BFF] duration-300 transition-all ease-in`}
+                >
+                  {menu.name}
+                </NavLink>
+              </li>
             ))}
           </ul>
         </div>
@@ -70,34 +74,37 @@ const DashboardHeader = () => {
             className=" w-[50px] h-[50px] rounded-full flex items-center justify-center cursor-pointer"
             onClick={() => setMenu(!menu)}
           >
-            
             <img
               src={profile}
               className="w-full h0full object-cover rounded-full"
               alt=""
             />
           </div>
-          
+
           {menu && (
             <div className="bg-white shadow-md drop-shadow-md absolute top-20 right-0 flex flex-col items-center justify-center">
-              <button className="flex items-center gap-6 px-10 py-5" onClick={() => {setMenu(false); setSettings(true)}}>
-                <IoSettingsOutline className="text-3xl"/>
+              <button
+                className="flex items-center gap-6 px-10 py-5"
+                onClick={() => {
+                  setMenu(false);
+                  setSettings(true);
+                }}
+              >
+                <IoSettingsOutline className="text-3xl" />
                 <p>Settings</p>
               </button>
-              
-              <button className="flex items-center gap-6 px-10 py-5 text-red-500">
-                <BiLogOut className="text-3xl"/>
+
+              <button
+                className="flex items-center gap-6 px-10 py-5 text-red-500"
+                onClick={logout}
+              >
+                <BiLogOut className="text-3xl" />
                 <p>Logout</p>
               </button>
-
             </div>
           )}
-
-          
         </div>
       </div>
-
-      
     </header>
   );
 };

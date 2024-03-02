@@ -11,6 +11,7 @@ import Projects from "./pages/authenticated/Projects";
 import Project from "./pages/authenticated/Project";
 import Upgrade from "./pages/authenticated/Upgrade";
 import Support from "./pages/authenticated/Support";
+import NotFound from "./pages/NotFound";
 // import Projects from "./pages/authenticated/Projects";
 
 const App = () => {
@@ -44,7 +45,7 @@ const App = () => {
             />
 
             <Route
-               path="upgrade"
+              path="upgrade"
               element={
                 <ProtectedRoute>
                   <Upgrade />
@@ -53,7 +54,7 @@ const App = () => {
             />
 
             <Route
-               path="support"
+              path="support"
               element={
                 <ProtectedRoute>
                   <Support />
@@ -70,6 +71,7 @@ const App = () => {
               }
             />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </>
