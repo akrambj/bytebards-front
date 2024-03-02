@@ -1,39 +1,7 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import Employees from "./Employees";
 
-const EmployeesActivity = () => {
-  const [employees, setEmployees] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState();
-
-  useEffect(() => {
-    const getProjects = async () => {
-      try {
-        setLoading(true);
-        const res = await axios.get(`http://localhost:8000/employees`);
-        console.log(res);
-        if (res.status === 200) {
-          const data = res.data;
-          console.log(data, "data");
-          setEmployees(data);
-          setLoading(false);
-          console.log("projects", employees);
-        } else {
-          setError("error");
-          setLoading(false);
-        }
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
-      } finally {
-        setLoading(false);
-      }
-    };
-    getProjects();
-  }, []);
-
+const EmployeesActivity = ({ project }) => {
   return (
     <div className="w-[72%] px-2 py-5 flex flex-col gap-7">
       <div className="flex items-center justify-between">
@@ -56,13 +24,9 @@ const EmployeesActivity = () => {
         <h4 className="w-[22%]  text-[#0B3558]">Activity</h4>
         <h4 className="w-[20%]  text-[#0B3558]">Files</h4>
         <h4 className="w-[30%]  text-[#0B3558]">Tasks Done</h4>
-        <h4 className="w-[30%]  text-[#0B3558]">Action</h4>
+        <h4 className="w-[30%] text-center text-[#0B3558]">Action</h4>
       </div>
-      {loading ? (
-        <div className="spinner"></div>
-      ) : (
-        <Employees employees={employees} />
-      )}
+      <Employees employees={project} />
     </div>
   );
 };

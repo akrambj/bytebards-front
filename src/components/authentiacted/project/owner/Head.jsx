@@ -3,7 +3,7 @@ import groups from "/imgs/services/groups.png";
 import { IoIosAdd } from "react-icons/io";
 import AddParticipant from "./AddParticipant";
 
-const Head = () => {
+const Head = ({ project }) => {
   const [addParticipant, setAddParticipant] = useState(false);
 
   return (
@@ -12,7 +12,14 @@ const Head = () => {
         Green Wave Project
       </h2>
       <div className="relative flex items-center -gap-5">
-        <img src={groups} alt="" />
+        {project?.members?.map((member) => (
+          <img
+            className="w-[50px] h-[50px] rounded-full"
+            key={member.email}
+            src={member.imageSrc}
+            alt={member.firstname}
+          />
+        ))}
         <div
           className=" w-[40px] h-[40px] rounded-full flex items-center justify-center bg-[#A6BBD1] cursor-pointer"
           onClick={() => setAddParticipant(!addParticipant)}
@@ -20,7 +27,10 @@ const Head = () => {
           <IoIosAdd className="text-white text-2xl" />
         </div>
         {addParticipant && (
-          <AddParticipant setAddParticipant={setAddParticipant} />
+          <AddParticipant
+            project={project}
+            setAddParticipant={setAddParticipant}
+          />
         )}
       </div>
     </div>

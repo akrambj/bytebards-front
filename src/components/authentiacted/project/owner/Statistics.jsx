@@ -1,11 +1,11 @@
 import EmployeesActivity from "./EmployeesActivity";
 import TaskStatistics from "./TaskStatistics";
 
-const Statistics = () => {
+const Statistics = ({ project }) => {
   return (
     <section className="w-full flex  gap-10">
-      <TaskStatistics />
-      <EmployeesActivity />
+      <TaskStatistics project={project} />
+      <EmployeesActivity project={project} />
     </section>
   );
 };

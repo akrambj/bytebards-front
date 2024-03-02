@@ -13,8 +13,8 @@ const AddProject = ({ setAddProject, setProjects }) => {
     name: "",
     deadline: "",
     managerEmail: "",
-    coordinater: null,
-    virtualRoom: null,
+    coordinater: false,
+    virtualRoom: false,
   });
   const [error, setError] = useState("");
 
@@ -33,7 +33,6 @@ const AddProject = ({ setAddProject, setProjects }) => {
         setError("");
       }
 
-      // Format the deadline date using Luxon
       const formattedDeadline = selectedDate.toFormat("dd-MM-yyyy");
 
       setFormData({
@@ -69,6 +68,7 @@ const AddProject = ({ setAddProject, setProjects }) => {
     }
   };
 
+  console.log("formmmm", formData);
   const createProject = async () => {
     try {
       setLoading(true);
