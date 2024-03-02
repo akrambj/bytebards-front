@@ -145,6 +145,12 @@ const AddProject = ({ setAddProject, setProjects }) => {
               name="deadline"
               onChange={handleChange}
             />
+            <input
+              className="w-[100%] h-[7vh] rounded-[24px] px-10 border-Gray66 border-2"
+              type="date"
+              name="deadline"
+              id=""
+            />
             {error && <p className="text-red-500">{error}</p>}
           </div>
 
