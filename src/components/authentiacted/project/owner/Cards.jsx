@@ -1,6 +1,6 @@
 import Card from "./Card";
 
-const Cards = () => {
+const Cards = ({ project }) => {
   const cards = [
     { name: "tasks", number: 402, color: "#66DC90" },
     { name: "Participants", number: 49, color: "#56A0EA" },

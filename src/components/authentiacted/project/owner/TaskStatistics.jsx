@@ -1,4 +1,4 @@
-const TaskStatistics = () => {
+const TaskStatistics = ({ project }) => {
   return (
     <div className="w-[25%] py-5 px-2 bg-white shadow-md drop-shadow-md flex flex-col gap-5">
       <div>
@@ -20,7 +20,6 @@ const TaskStatistics = () => {
           <h5 className=" text-center  text-xl font-bold">23</h5>
         </div>
       </div>
-      {/* <Donut /> */}
     </div>
   );
 };
