@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import OwnerProject from "../../components/authentiacted/project/OwnerProject";
+import ManagerProject from "../../components/authentiacted/project/manageer/ManagerProject";
+import EmployeeProject from "../../components/authentiacted/project/employees/EmployeeProject";
 
 const Project = () => {
   const [project, setProjects] = useState(null);
@@ -23,8 +25,8 @@ const Project = () => {
           },
         });
         console.log(res);
-        if (res.status === 200) {
-          const data = res.data;
+        if (res.status === 201) {
+          const data = res.data.project;
           console.log(data, "data");
           setProjects(data);
           setLoading(false);
@@ -42,17 +44,23 @@ const Project = () => {
     };
     getProjects();
   }, []);
+
+  useEffect(() => {
+    console.log(project, "po");
+  }, [project]);
   console.log(projectId);
+
+  console.log(project, "project");
   return (
     <section className="w-screen flex flex-col gap-10">
       {project && (
         <>
           {project.status === "OWNER" ? (
-            <OwnerProject />
+            <OwnerProject project={project} />
           ) : project.status === "MANAGER" ? (
-            <div>ff</div>
+            <ManagerProject />
           ) : (
-            <div>dd</div>
+            <EmployeeProject />
           )}
         </>
       )}
