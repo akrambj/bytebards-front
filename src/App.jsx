@@ -21,7 +21,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/virtual_env/:userId" index element={<VirtualEnv />} />
+          {/* <Route path="/virtual_env/:userId" index element={<VirtualEnv />} /> */}
           <Route path="/register" element={<Register />} />
           <Route path="/venv/:projectID" element={<Venv />} />
           <Route path="/avatar" element={<Avatar />} />
