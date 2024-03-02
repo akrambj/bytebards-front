@@ -12,6 +12,8 @@ import Project from "./pages/authenticated/Project";
 import Upgrade from "./pages/authenticated/Upgrade";
 import Support from "./pages/authenticated/Support";
 import NotFound from "./pages/NotFound";
+import Venv from "./pages/venv/Venv";
+import VirtualEnv from "./pages/VirtualEnv";
 // import Projects from "./pages/authenticated/Projects";
 
 const App = () => {
@@ -19,8 +21,10 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
+          <Route path="/virtual_env/:userId" index element={<VirtualEnv />} />
           <Route path="/register" element={<Register />} />
-
+          <Route path="/venv/:projectID" element={<Venv />} />
+          <Route path="/avatar" element={<Avatar />} />
           <Route path="/login" element={<Login />} />
           <Route path="/Smtp" element={<Smtp />} />
           <Route path="/" element={<SharedLayout />}>
