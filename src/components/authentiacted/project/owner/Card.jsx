@@ -1,5 +1,4 @@
 const Card = ({ card }) => {
-  console.log(card.value, "value");
   return (
     <div
       style={{ borderColor: card.color }}

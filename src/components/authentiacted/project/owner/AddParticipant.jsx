@@ -77,7 +77,6 @@ const AddParticipant = ({ setAddParticipant, project }) => {
             value={formData.email}
             onChange={(e) => {
               setFormData({ ...formData, email: e.target.value });
-              console.log("clicked");
             }}
             disabled={loading}
             className="px-2 w-[350px]  py-3 border-[1px] border-[#A6BBD18F] rounded-2xl"

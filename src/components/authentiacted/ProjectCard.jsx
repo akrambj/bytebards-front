@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import groups from "/imgs/services/groups.png";
 
 const ProjectCard = ({ project }) => {
-
   const getColor = () => {
     let backgroundColor = "#FCFCFD";
     if (project.status === "EMPLOYEE") {
@@ -23,9 +22,8 @@ const ProjectCard = ({ project }) => {
 
   const [day, month, year] = project.deadline.split("-").map(Number);
   const jsDate = new Date(year, month - 1, day);
-  const deadline = Date.now() - jsDate.getTime();
-
-  console.log("g");
+  let deadline = Date.now() - jsDate.getTime();
+  deadline = Math.floor(deadline / 1000 / 60 / 60 / 24);
 
   const bg = getColor();
 
@@ -40,9 +38,15 @@ const ProjectCard = ({ project }) => {
       ></div>
       <div className="flex flex-col gap-5 w-full h-[90%] p-5 pl-10">
         <div className="flex items-center justify-between px-10">
-          {/* <h3 className="bg-[#FFF4F4] text-[#F1511B] p-2">
-            deadline in  days
-          </h3> */}
+          {deadline > 0 ? (
+            <h3 className="bg-[#FFF4F4] text-[#F1511B] p-2">
+              deadline in {deadline} days
+            </h3>
+          ) : (
+            <h3 className="bg-[#FFF4F4] text-[#1bf126] p-2">
+              deadline in {-deadline} days
+            </h3>
+          )}
         </div>
         <h2 className="text-[1.5rem] font-bold">{project?.name}</h2>
         <div className="flex items-center gap-5">

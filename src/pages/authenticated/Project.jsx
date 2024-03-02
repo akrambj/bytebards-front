@@ -25,13 +25,10 @@ const Project = () => {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log(res);
         if (res.status === 201) {
           const data = res.data.project;
-          console.log(data, "data");
           setProjects(data);
           setLoading(false);
-          console.log("projects", project);
         } else {
           setError("error");
           setLoading(false);
@@ -45,10 +42,6 @@ const Project = () => {
     };
     getProjects();
   }, []);
-
-  useEffect(() => {
-    console.log(project, "po");
-  }, [project]);
 
   const getStatistics = async () => {
     try {
@@ -72,7 +65,6 @@ const Project = () => {
 
   useEffect(() => {
     getStatistics();
-    console.log(statistics, "dsadf");
   }, []);
   return (
     <section className="w-screen flex flex-col gap-10 my-[20vh]">

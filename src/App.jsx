@@ -20,13 +20,21 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/register" element={<Register />} />
-          <Route path="/avatar" element={<Avatar />} />
+
           <Route path="/login" element={<Login />} />
           <Route path="/Smtp" element={<Smtp />} />
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<Home />} />
             {/* <Route path="*" element={<NotFound />} /> */}
           </Route>
+          <Route
+            path="/avatar"
+            element={
+              <ProtectedRoute>
+                <Avatar />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/dashboard"
             element={

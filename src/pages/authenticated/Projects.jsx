@@ -50,11 +50,17 @@ const Projects = () => {
         {loading ? (
           <div className="spinner mx-auto"></div>
         ) : (
-          <>
-            {projects?.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </>
+          <div className=" w-full h-[50vh] text-2xl capitalize font-bold">
+            {projects.length === 0 ? (
+              <h2 className="text-center">there are no projects</h2>
+            ) : (
+              <>
+                {projects?.map((project) => (
+                  <ProjectCard key={project.id} project={project} />
+                ))}
+              </>
+            )}
+          </div>
         )}
       </div>
       {addProject && (

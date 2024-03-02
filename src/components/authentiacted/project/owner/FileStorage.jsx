@@ -24,10 +24,7 @@ const FileStorage = ({ project }) => {
         }
       );
 
-      console.log(data, "dataddddd");
       data?.data?.files ? setFiles(data.data.files) : [];
-
-      console.log(token);
     } catch (err) {
       setError(err.message);
     } finally {

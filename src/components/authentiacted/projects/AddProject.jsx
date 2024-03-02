@@ -19,8 +19,6 @@ const AddProject = ({ setAddProject, setProjects }) => {
   });
   const [error, setError] = useState("");
 
-  console.log(formData.deadline, "dead");
-
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -60,8 +58,6 @@ const AddProject = ({ setAddProject, setProjects }) => {
       });
 
       data?.data?.projects ? setProjects(data.data.projects) : [];
-
-      console.log(token);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -69,7 +65,6 @@ const AddProject = ({ setAddProject, setProjects }) => {
     }
   };
 
-  console.log("formmmm", formData);
   const createProject = async () => {
     try {
       setLoading(true);
@@ -89,11 +84,9 @@ const AddProject = ({ setAddProject, setProjects }) => {
         }, 3000);
         getProjects();
       } else {
-        console.log("error");
         setLoading(false);
       }
     } catch (err) {
-      console.log(err.message);
       setLoading(false);
     } finally {
       setLoading(false);
@@ -145,8 +138,13 @@ const AddProject = ({ setAddProject, setProjects }) => {
 
           <div className="flex gap-[12px] flex-col w-[100%]">
             <p className="font-medium text-Typo">Deadline</p>
-            
-            <input className="w-[100%] h-[7vh] rounded-[24px] px-10 border-Gray66 border-2" type="date" name="deadline" id="" />
+
+            <input
+              className="w-[100%] h-[7vh] rounded-[24px] px-10 border-Gray66 border-2"
+              type="date"
+              name="deadline"
+              onChange={handleChange}
+            />
             {error && <p className="text-red-500">{error}</p>}
           </div>
 
@@ -164,7 +162,7 @@ const AddProject = ({ setAddProject, setProjects }) => {
             />
             <h4 className="absolute right-[5%] bg-[#BFB7F133] px-2 py-1 rounded-md text-[#BFB7F1] top-[50%]">
               Manager
-            </h4>          
+            </h4>
           </div>
 
           <div className="flex gap-[12px] flex-col w-[100%]">
@@ -206,7 +204,7 @@ const AddProject = ({ setAddProject, setProjects }) => {
           </div>
 
           <div className="w-full">
-          <button className=" w-[100%] mx-auto h-[7vh] bg-Green100 rounded-[24px] text-white font-bold flex justify-center text-[1.5rem] items-center">
+            <button className=" w-[100%] mx-auto h-[7vh] bg-Green100 rounded-[24px] text-white font-bold flex justify-center text-[1.5rem] items-center">
               {loading ? <div className="spinner "></div> : "Create"}
             </button>
           </div>

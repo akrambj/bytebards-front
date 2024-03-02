@@ -23,14 +23,12 @@ const Tasks = ({ project }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(res, "res");
       if (res.status === 201) {
         const data = res.data.tasks;
         setTasks(data);
         setLoading(false);
       }
     } catch (err) {
-      console.log(err.message);
       setLoading(false);
     } finally {
       setLoading(false);
@@ -54,10 +52,8 @@ const Tasks = ({ project }) => {
         }
       );
       if (res.status === 201) {
-        console.log("created", res);
         setLoading(false);
       } else {
-        console.log("error");
         setLoading(false);
       }
     } catch (err) {
@@ -75,7 +71,6 @@ const Tasks = ({ project }) => {
   const handleDragEnter = (e, status) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log("Entering", status);
   };
 
   const handleDragOver = (e) => {

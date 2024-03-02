@@ -24,12 +24,6 @@ const Cards = ({ project, statistics }) => {
     { name: "Days", number: 8, color: "#BFB7F1", value: "100 day" },
   ];
 
-  console.log("helooooooooooooooo");
-
-  useEffect(() => {
-    console.log(statistics, "statistics");
-  }, [statistics]);
-  console.log(statistics?.members?.length, "fsdfsa");
   return (
     <div className="flex items-center justify-between">
       {cards.map((card, index) => (
