@@ -81,7 +81,7 @@ const Login = () => {
                 />
                 <div className="flex justify-between items-center">
                   <p className="font-medium text-Typo">Password</p>
-                  <p className="font-medium text-Blue100">Forget Password ?</p>
+                  <Link className="font-medium text-Blue100" to="/smtp">Forget Password ?</Link>
                 </div> 
                   <Input
                   value={formData.password}

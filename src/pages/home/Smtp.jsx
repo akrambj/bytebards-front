@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Input from '../../components/UI/Input'
 import SmtpPagesFormat from '../../components/home/smtp/SmtpPagesFormat';
 import { MdDone } from "react-icons/md";
+import { Link } from 'react-router-dom';
 
 const Smtp = () => {
   const [step, setStep] = useState(0)
@@ -82,9 +83,9 @@ const Smtp = () => {
                             Your password has been updated successfully, you can always reset your password for more security
                             </p>
                         </div>
-                        <button className=" w-[30vw] mx-auto h-[7vh] bg-Green100 rounded-[24px] text-white font-bold flex justify-center text-[1.5rem] items-center" onClick={() => setStep(prevstep=>prevstep+1)}>
+                        <Link className=" w-[30vw] mx-auto h-[7vh] bg-Green100 rounded-[24px] text-white font-bold flex justify-center text-[1.5rem] items-center" to="/login">
                             {loading ? <div className="spinner "></div> : "Connexion"}
-                        </button>
+                        </Link>
                     </div>)
             )
         }

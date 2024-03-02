@@ -8,7 +8,7 @@ const Cards = ({ project }) => {
     { name: "Days", number: 8, color: "#BFB7F1" },
   ];
   return (
-    <div className="flex items-center justify-center gap-10">
+    <div className="flex items-center justify-between">
       {cards.map((card, index) => (
         <Card key={index} card={card} />
       ))}

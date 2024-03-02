@@ -5,7 +5,7 @@ import Tools from "../owner/Tools";
 
 const EmployeeProject = ({ project }) => {
   return (
-    <div className="flex flex-col gap-10 px-20">
+    <div className="flex flex-col gap-10 px-[10vw]">
       <Head project={project} />
       <Tools project={project} />
       <Tasks project={project} />
