@@ -9,6 +9,8 @@ import ProtectedRoute from "./components/routes/ProtectedRoute";
 import DashboardLayout from "./components/shared/authenticatedShared/DashboardLayout";
 import Projects from "./pages/authenticated/Projects";
 import Project from "./pages/authenticated/Project";
+import Upgrade from "./pages/authenticated/Upgrade";
+import Support from "./pages/authenticated/Support";
 // import Projects from "./pages/authenticated/Projects";
 
 const App = () => {
@@ -37,6 +39,25 @@ const App = () => {
               element={
                 <ProtectedRoute>
                   <Projects />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+               path="upgrade"
+              element={
+                <ProtectedRoute>
+                  <Upgrade />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+               path="support"
+              element={
+                <ProtectedRoute>
+                  <Support />
+                  {/* <Support /> */}
                 </ProtectedRoute>
               }
             />

@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import groups from "/imgs/services/groups.png";
-const WorkspaceManager = ({ project }) => {
+
+const ProjectCard = ({ project }) => {
+
   const getColor = () => {
     let backgroundColor = "#FCFCFD";
     if (project.status === "EMPLOYEE") {
@@ -26,22 +28,23 @@ const WorkspaceManager = ({ project }) => {
   console.log("g");
 
   const bg = getColor();
+
   return (
     <div
       onClick={handleNaviagtion}
-      className="cursor-pointer w-[30%] bg-[#FCFCFD] drop-shadow-md shadow-md h-[240px] rounded-lg flex flex-col"
+      className="cursor-pointer w-[25vw] bg-[#FCFCFD] drop-shadow-card h-[286px] rounded-[14px] flex flex-col"
     >
       <div
         style={{ backgroundColor: bg }}
-        className={`w-full h-[10%]  rounded-t-lg`}
+        className={`w-full h-[10%]  rounded-t-[14px]`}
       ></div>
-      <div className="flex flex-col gap-5 w-full h-[90%] p-5">
+      <div className="flex flex-col gap-5 w-full h-[90%] p-5 pl-10">
         <div className="flex items-center justify-between px-10">
           {/* <h3 className="bg-[#FFF4F4] text-[#F1511B] p-2">
             deadline in  days
           </h3> */}
         </div>
-        <h2 className="text-2xl font-bold">{project?.name}</h2>
+        <h2 className="text-[1.5rem] font-bold">{project?.name}</h2>
         <div className="flex items-center gap-5">
           <img src={groups} alt="" />
           <h5 className="font-semibold text-[#476788]">
@@ -64,4 +67,4 @@ const WorkspaceManager = ({ project }) => {
   );
 };
 
-export default WorkspaceManager;
+export default ProjectCard;
