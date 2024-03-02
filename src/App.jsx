@@ -9,6 +9,7 @@ import ProtectedRoute from "./components/routes/ProtectedRoute";
 import DashboardLayout from "./components/shared/authenticatedShared/DashboardLayout";
 import Projects from "./pages/authenticated/Projects";
 import Project from "./pages/authenticated/Project";
+import Venv from "./pages/venv/Venv"
 // import Projects from "./pages/authenticated/Projects";
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/register" element={<Register />} />
+          <Route path="/venv/:projectID" element={<Venv />} />
           <Route path="/avatar" element={<Avatar />} />
           <Route path="/login" element={<Login />} />
           <Route path="/Smtp" element={<Smtp />} />
