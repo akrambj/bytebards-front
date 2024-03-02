@@ -5,11 +5,11 @@ import Tools from "./owner/Tools";
 import Tasks from "./owner/Tasks";
 import FileStorage from "./owner/FileStorage";
 
-const OwnerProject = ({ project }) => {
+const OwnerProject = ({ project, statistics }) => {
   return (
     <div className="flex flex-col gap-10 px-16">
       <Head project={project} />
-      <Cards project={project} />
+      <Cards project={project} statistics={statistics} />
       <Statistics project={project} />
       <Tools project={project} />
       <Tasks project={project} />

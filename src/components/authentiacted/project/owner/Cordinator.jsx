@@ -2,22 +2,15 @@ import { IoMdClose } from "react-icons/io";
 import hi from "/imgs/manager/owner/hi.png";
 import ai from "/imgs/manager/owner/ai.png";
 import { BsStars } from "react-icons/bs";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { IoSettingsOutline } from "react-icons/io5";
 import { FaFilePdf } from "react-icons/fa";
 import { HiOutlineDotsVertical } from "react-icons/hi";
-import axios from "axios";
 
 const Cordinator = ({ setConrdinator }) => {
-  const [loading, setLoading] = useState(false);
   const [step, setStep] = useState(1);
   const [next, setNext] = useState(false);
-  const [files, setFiles] = useState([]);
   const [search, setSearch] = useState("");
-  const [error, setError] = useState(false);
-
-  const apiUrl = import.meta.env.VITE_REACT_API_URL;
-  const token = localStorage.getItem("access_token");
 
   const handleNext = (e) => {
     e.preventDefault();
@@ -28,34 +21,6 @@ const Cordinator = ({ setConrdinator }) => {
         setStep(3);
       }, 2000);
     }, 1000);
-  };
-
-  const getFiles = async () => {
-    try {
-      setLoading(true);
-      const data = await axios.get(
-        `${apiUrl}/projects/files?search=${search}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      console.log(data, "fsaf");
-
-      // data?.data?.projects ? setFiles(data.data.projects) : [];
-
-      console.log(token);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleubmit = (e) => {
-    e.preventDefault();
-    getFiles();
   };
 
   return (
@@ -87,14 +52,13 @@ const Cordinator = ({ setConrdinator }) => {
               </div>
             </div>
             <form
-              onSubmit={handleubmit}
+              onSubmit={handleNext}
               className="relative flex flex-col gap-2"
             >
               <div className="flex items-center">
                 <input
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  disabled={loading}
                   required
                   className="px-2 w-[90%] mx-auto py-4 border-[1px] border-[#A6BBD18F] rounded-2xl"
                   type="text"

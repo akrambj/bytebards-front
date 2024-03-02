@@ -1,5 +1,4 @@
 import { useState } from "react";
-import groups from "/imgs/services/groups.png";
 import { IoIosAdd } from "react-icons/io";
 import AddParticipant from "./AddParticipant";
 

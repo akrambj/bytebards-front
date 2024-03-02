@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import profile from "/imgs/manager/header/profile.png";
 import logo from "/imgs/header/logo.png";
 import { AiOutlineGlobal } from "react-icons/ai";
@@ -18,8 +18,11 @@ const DashboardHeader = () => {
     { name: "support", link: "/dashboard/support" },
   ];
 
+  const navigate = useNavigate();
+
   const logout = () => {
-    localStorage.removeItem("access_token");
+    localStorage.setItem("access_token", "");
+    navigate("/login");
   };
 
   // Update theIndex when clicking on a NavLink

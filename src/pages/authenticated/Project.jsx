@@ -7,6 +7,7 @@ import EmployeeProject from "../../components/authentiacted/project/employees/Em
 
 const Project = () => {
   const [project, setProjects] = useState(null);
+  const [statistics, setStatistics] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
   const [addProject, setAddProject] = useState(false);
@@ -48,19 +49,41 @@ const Project = () => {
   useEffect(() => {
     console.log(project, "po");
   }, [project]);
-  console.log(projectId);
 
-  console.log(project, "project");
+  const getStatistics = async () => {
+    try {
+      const res = await axios.get(
+        `${apiUrl}/projects/statistics/${project.id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (res.status === 200) {
+        const data = res.data.statistics;
+        setStatistics(data);
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  useEffect(() => {
+    getStatistics();
+    console.log(statistics, "dsadf");
+  }, []);
   return (
     <section className="w-screen flex flex-col gap-10">
       {project && (
         <>
           {project.status === "OWNER" ? (
-            <OwnerProject project={project} />
+            <OwnerProject project={project} statistics={statistics} />
           ) : project.status === "MANAGER" ? (
-            <ManagerProject project={project} />
+            <ManagerProject project={project} statistics={statistics} />
           ) : (
-            <EmployeeProject project={project} />
+            <EmployeeProject project={project} statistics={statistics} />
           )}
         </>
       )}

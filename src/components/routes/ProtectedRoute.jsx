@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 const ProtectedRoute = ({ children }) => {
   const navigate = useNavigate();
-  const isUser = localStorage.getItem("access_token") !== null;
+  const isUser =
+    localStorage.getItem("access_token") !== null &&
+    localStorage.getItem("access_token") !== "";
 
   useEffect(() => {
     if (!isUser) {

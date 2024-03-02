@@ -1,4 +1,5 @@
 const Card = ({ card }) => {
+  console.log(card.value, "value");
   return (
     <div
       style={{ borderColor: card.color }}
@@ -11,7 +12,7 @@ const Card = ({ card }) => {
         {card.name}
       </h2>
 
-      <h4 className="text-[#0B3558] font-bold text-4xl">{card.number}</h4>
+      <h4 className="text-[#0B3558] font-bold text-4xl">{card.value}</h4>
     </div>
   );
 };
