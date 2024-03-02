@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import WorkspaceManager from "../../components/authentiacted/WorkspaceManager";
 import AddProject from "../../components/authentiacted/projects/AddProject";
+import ProjectCard from "../../components/authentiacted/ProjectCard";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -36,23 +36,23 @@ const Projects = () => {
   }, []);
 
   return (
-    <section className="w-screen min-h-screen  flex flex-col  gap-3 ">
-      <div className="flex items-center justify-between px-10">
-        <h2 className="text-3xl font-bold text-[#0B3558]">My Projects</h2>
+    <section className="w-screen min-h-screen  flex flex-col  gap-[5vh] my-[20vh]">
+      <div className="flex items-center justify-between px-[10vw]">
+        <h2 className="text-[2.5rem] font-bold text-Typo">My Projects</h2>
         <button
-          className="bg-[#66DC90] text-white font-semibold px-4 py-2 rounded-lg"
+          className="bg-Green100 text-white font-semibold px-[24px] py-[16px] rounded-[12px]"
           onClick={() => setAddProject(true)}
         >
           Add project
         </button>
       </div>
-      <div className="flex min-h-screen items-center justify-center  mx-auto w-[95%] gap-4 flex-wrap">
+      <div className="flex min-h-screen items-center w-[80vw] mx-auto justify-between flex-wrap gap-y-16">
         {loading ? (
-          <div className="spinner"></div>
+          <div className="spinner mx-auto"></div>
         ) : (
           <>
             {projects?.map((project) => (
-              <WorkspaceManager key={project.id} project={project} />
+              <ProjectCard key={project.id} project={project} />
             ))}
           </>
         )}
