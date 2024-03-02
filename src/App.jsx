@@ -9,6 +9,9 @@ import ProtectedRoute from "./components/routes/ProtectedRoute";
 import DashboardLayout from "./components/shared/authenticatedShared/DashboardLayout";
 import Projects from "./pages/authenticated/Projects";
 import Project from "./pages/authenticated/Project";
+import Upgrade from "./pages/authenticated/Upgrade";
+import Support from "./pages/authenticated/Support";
+import NotFound from "./pages/NotFound";
 import Venv from "./pages/venv/Venv";
 import VirtualEnv from "./pages/VirtualEnv";
 // import Projects from "./pages/authenticated/Projects";
@@ -29,6 +32,14 @@ const App = () => {
             {/* <Route path="*" element={<NotFound />} /> */}
           </Route>
           <Route
+            path="/avatar"
+            element={
+              <ProtectedRoute>
+                <Avatar />
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="/dashboard"
             element={
               <ProtectedRoute>
@@ -44,6 +55,25 @@ const App = () => {
                 </ProtectedRoute>
               }
             />
+
+            <Route
+              path="upgrade"
+              element={
+                <ProtectedRoute>
+                  <Upgrade />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="support"
+              element={
+                <ProtectedRoute>
+                  <Support />
+                  {/* <Support /> */}
+                </ProtectedRoute>
+              }
+            />
             <Route
               path="projects/:projectId"
               element={
@@ -53,6 +83,7 @@ const App = () => {
               }
             />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </>

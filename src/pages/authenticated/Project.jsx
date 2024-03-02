@@ -2,9 +2,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import OwnerProject from "../../components/authentiacted/project/OwnerProject";
+import ManagerProject from "../../components/authentiacted/project/manageer/ManagerProject";
+import EmployeeProject from "../../components/authentiacted/project/employees/EmployeeProject";
 
 const Project = () => {
   const [project, setProjects] = useState(null);
+  const [statistics, setStatistics] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
   const [addProject, setAddProject] = useState(false);
@@ -22,13 +25,10 @@ const Project = () => {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log(res);
-        if (res.status === 200) {
-          const data = res.data;
-          console.log(data, "data");
+        if (res.status === 201) {
+          const data = res.data.project;
           setProjects(data);
           setLoading(false);
-          console.log("projects", project);
         } else {
           setError("error");
           setLoading(false);
@@ -42,17 +42,40 @@ const Project = () => {
     };
     getProjects();
   }, []);
-  console.log(projectId);
+
+  const getStatistics = async () => {
+    try {
+      const res = await axios.get(
+        `${apiUrl}/projects/statistics/${project.id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (res.status === 200) {
+        const data = res.data.statistics;
+        setStatistics(data);
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  useEffect(() => {
+    getStatistics();
+  }, []);
   return (
-    <section className="w-screen flex flex-col gap-10">
+    <section className="w-screen flex flex-col gap-10 my-[20vh]">
       {project && (
         <>
           {project.status === "OWNER" ? (
-            <OwnerProject />
+            <OwnerProject project={project} statistics={statistics} />
           ) : project.status === "MANAGER" ? (
-            <div>ff</div>
+            <ManagerProject project={project} statistics={statistics} />
           ) : (
-            <div>dd</div>
+            <EmployeeProject project={project} statistics={statistics} />
           )}
         </>
       )}

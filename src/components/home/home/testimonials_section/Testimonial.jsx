@@ -4,7 +4,7 @@ const Testimonial = ({ item, followIndex, index }) => {
   return (
     <div
       className={`${
-        followIndex === index ? "h-full self-end w-[18vw] h-[70vh] -order-1" : ""
+        followIndex === index ? "h-full self-end w-[18vw] h-[75vh] -order-1" : ""
       } w-[10vw] h-[240px] p-2 transition-all ease-in duration-500`}
     >
       {followIndex === index && (

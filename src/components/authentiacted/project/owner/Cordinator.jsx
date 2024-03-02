@@ -10,6 +10,7 @@ import { HiOutlineDotsVertical } from "react-icons/hi";
 const Cordinator = ({ setConrdinator }) => {
   const [step, setStep] = useState(1);
   const [next, setNext] = useState(false);
+  const [search, setSearch] = useState("");
 
   const handleNext = (e) => {
     e.preventDefault();
@@ -24,10 +25,10 @@ const Cordinator = ({ setConrdinator }) => {
 
   return (
     <div className="fixed top-0 left-0 right-0 bottom-0 overlay flex items-center justify-center">
-      <div className="w-[30%] py-4 h-[500px] px-2 bg-white drop-shadow-md shadow-md flex flex-col rounded-lg duration-300 justify-between gap-4 z-50">
+      <div className="w-[30%] py-4 h-[500px] px-2 bg-white drop-shadow-md shadow-md flex flex-col rounded-[32px] duration-300 justify-between gap-4 z-50">
         {step === 1 ? (
           <>
-            <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between w-[90%] mx-auto pt-4">
               <h2 className="text-3xl capitalize font-bold text-[#476788]">
                 Cordinator
               </h2>
@@ -40,7 +41,7 @@ const Cordinator = ({ setConrdinator }) => {
               <img src={hi} alt="" />
             </div>
             <div className="flex  justify-end gap-4 ">
-              <div className="w-[250px] py-2 px-4 flex bg-[#FBBC091A]  items-center justify-center border-[0.4px] border-[#FBBC09]">
+              <div className="w-[60%] py-2 px-4 flex bg-[#FBBC091A] rounded-[4px] items-center justify-center border-[0.4px] border-[#FBBC09]">
                 <p className="text-sm ">
                   Hi, i’m Cordinator, i’m so excited to make your remote work
                   experience unique & smooth!
@@ -56,6 +57,8 @@ const Cordinator = ({ setConrdinator }) => {
             >
               <div className="flex items-center">
                 <input
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
                   required
                   className="px-2 w-[90%] mx-auto py-4 border-[1px] border-[#A6BBD18F] rounded-2xl"
                   type="text"

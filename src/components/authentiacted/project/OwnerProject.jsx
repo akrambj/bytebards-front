@@ -1,19 +1,19 @@
-import Head from "./manager/Head";
-import Cards from "./manager/Cards";
-import Statistics from "./manager/Statistics";
-import Tools from "./manager/Tools";
-import Tasks from "./manager/Tasks";
-import FileStorage from "./manager/FileStorage";
+import Head from "./owner/Head";
+import Cards from "./owner/Cards";
+import Statistics from "./owner/Statistics";
+import Tools from "./owner/Tools";
+import Tasks from "./owner/Tasks";
+import FileStorage from "./owner/FileStorage";
 
-const OwnerProject = () => {
+const OwnerProject = ({ project, statistics }) => {
   return (
-    <div className="flex flex-col gap-10 px-16">
-      <Head />
-      <Cards />
-      <Statistics />
-      <Tools />
-      <Tasks />
-      <FileStorage />
+    <div className="flex flex-col gap-[13vh] px-[10vw]">
+      <Head project={project} />
+      <Cards project={project} statistics={statistics} />
+      <Statistics project={project} />
+      <Tools project={project} />
+      <Tasks project={project} />
+      <FileStorage project={project} />
     </div>
   );
 };

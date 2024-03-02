@@ -4,7 +4,7 @@ import { FaCheckCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Input from "../../UI/Input";
 
-const RegisterForm = () => {  
+const RegisterForm = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -27,21 +27,12 @@ const RegisterForm = () => {
   const handleCreateAccount = async () => {
     try {
       setLoading(true);
-      const res = await axios.post(
-        `${apiUrl}/auth/register`,
-        formData
-      );
-      console.log(res, "res");
+      const res = await axios.post(`${apiUrl}/auth/register`, formData);
       if (res.status === 200) {
         localStorage.setItem("access_token", res.data.token);
         setLoading(false);
         setCreated(true);
-        setTimeout(() => {
-          setCreated(false);
-          setTimeout(() => {
-            navigate("/dashboard");
-          }, 2000);
-        }, 2000);
+        navigate("/avatar");
       }
     } catch (err) {
       setLoading(false);
@@ -84,7 +75,6 @@ const RegisterForm = () => {
         </h4>
       </div>
       <div className="flex items-center gap-4 justify-center">
-        
         <div className="flex gap-[12px] flex-col w-[49%]">
           <p className="font-medium text-Typo">First Name</p>
           <Input
@@ -97,11 +87,11 @@ const RegisterForm = () => {
             width="100%"
             display={"none"}
             disabled={loading}
-          />              
-          </div>
-          <div className="flex gap-[12px] flex-col w-[49%]">
-            <p className="font-medium text-Typo">Last Name</p>
-            <Input
+          />
+        </div>
+        <div className="flex gap-[12px] flex-col w-[49%]">
+          <p className="font-medium text-Typo">Last Name</p>
+          <Input
             value={formData.lastName}
             name="lastName"
             onChange={handleChange}
@@ -111,9 +101,8 @@ const RegisterForm = () => {
             width="100%"
             display={"none"}
             disabled={loading}
-            />         
-          </div>
-        
+          />
+        </div>
       </div>
       <div className="flex gap-[12px] flex-col w-[100%]">
         <p className="font-medium text-Typo">Email</p>
@@ -130,7 +119,7 @@ const RegisterForm = () => {
         />
       </div>
       <div className="flex gap-[12px] flex-col w-[100%]">
-      <p className="font-medium text-Typo">Password</p>
+        <p className="font-medium text-Typo">Password</p>
         <Input
           value={formData.password}
           name="password"
@@ -143,14 +132,14 @@ const RegisterForm = () => {
         />
       </div>
       <div className="relative flex gap-[12px] flex-col w-[100%]">
-      <div className="flex justify-between items-center">
-        <p className="font-medium text-Typo">Confirm Password</p>
-        {confirmError && (
-          <div className="bg-red-100 text-red-500 font-medium py-2 px-4 rounded-[24px]">
-            Passwords do not match
-          </div>
-        )}
-      </div>
+        <div className="flex justify-between items-center">
+          <p className="font-medium text-Typo">Confirm Password</p>
+          {confirmError && (
+            <div className="bg-red-100 text-red-500 font-medium py-2 px-4 rounded-[24px]">
+              Passwords do not match
+            </div>
+          )}
+        </div>
         <Input
           label="Confirm Password"
           type="password"
@@ -165,11 +154,10 @@ const RegisterForm = () => {
             }
           }}
         />
-        
       </div>
       <button className=" w-[100%] mx-auto h-[7vh] bg-Green100 rounded-[24px] text-white font-bold flex justify-center text-[1.5rem] items-center">
-              {loading ? <div className="spinner "></div> : "Connexion"}
-            </button>
+        {loading ? <div className="spinner "></div> : "Connexion"}
+      </button>
     </form>
   );
 };
