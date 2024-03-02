@@ -4,14 +4,13 @@ import Phaser from "phaser";
 import GameScene from "../components/venv/GameScene";
 import axios from "axios";
 
-const VirtualEnv = ({ members }) => {
+const VirtualEnv = ({ members, userId, projectId }) => {
   const [loading, setLoading] = useState(true);
-  const { userId } = useParams();
-  const projectId = "a3ef2505-ea9e-4c2b-93af-09cba8f2fe07";
+  // const { userId } = useParams();
 
   async function fetchMembers() {
     const projectMembers = await axios.get(
-      `http://localhost:3000/projects/${projectId}`,
+      `https://4e32-41-111-189-195.ngrok-free.app/projects/${projectId}`,
       {
         headers: {
           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRhYTg3Mzg1LTlkN2YtNDhlMy05YWMxLWMwMGE1NzZkYzhiZiIsImV4cCI6NTMwOTMxMjczM30.a88Q1OlymrkA9w0VfF2igV8-GzDxKiuYKPk82cOfwwY`,
@@ -22,6 +21,15 @@ const VirtualEnv = ({ members }) => {
   }
 
   useEffect(() => {
+    // const screenWidth =
+    //   window.innerWidth ||
+    //   document.documentElement.clientWidth ||
+    //   document.body.clientWidth;
+    const screenHeight =
+      window.innerHeight ||
+      document.documentElement.clientHeight ||
+      document.body.clientHeight;
+
     const membersList = [
       {
         lastName: "YEKENE",
@@ -60,43 +68,67 @@ const VirtualEnv = ({ members }) => {
     ];
 
     var returnFunc = () => {};
-    fetchMembers()
-      .then((members) => {
-        const config = {
-          type: Phaser.AUTO,
-          width: 1600 / 2,
-          height: ((1600 / 1920) * 1080) / 2,
-          test: "VirtualEnv",
-          scene: new GameScene(
-            projectId,
-            "https://firebasestorage.googleapis.com/v0/b/ghack-cf0c2.appspot.com/o/picture.png?alt=media&token=a14a189f-e550-4660-9f40-fe20e65dc99b",
-            userId,
-            members
-          ),
-          physics: {
-            default: "arcade",
-            arcade: {
-              gravity: { y: 0 },
-              debug: false,
-            },
-          },
-        };
+    // fetchMembers()
+    //   .then((members) => {
+    //     const config = {
+    //       type: Phaser.AUTO,
+    //       width: screenHeight * 1.77777, //1600 / 2,
+    //       height: screenHeight, //((1600 / 1920) * 1080) / 2,
+    //       test: "VirtualEnv",
+    //       scene: new GameScene(
+    //         projectId,
+    //         "https://firebasestorage.googleapis.com/v0/b/ghack-cf0c2.appspot.com/o/picture.png?alt=media&token=a14a189f-e550-4660-9f40-fe20e65dc99b",
+    //         userId,
+    //         members
+    //       ),
+    //       physics: {
+    //         default: "arcade",
+    //         arcade: {
+    //           gravity: { y: 0 },
+    //           debug: false,
+    //         },
+    //       },
+    //     };
 
-        const game = new Phaser.Game(config);
+    //     const game = new Phaser.Game(config);
 
-        returnFunc = () => {
-          // clearInterval(interval);
-          game.destroy(true);
-        };
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log("error fetching members: ", error);
-      });
+    //     returnFunc = () => {
+    //       // clearInterval(interval);
+    //       game.destroy(true);
+    //     };
+    //     setLoading(false);
+    //   })
+    //   .catch((error) => {
+    //     console.log("error fetching members: ", error);
+    //   });
     // const interval = setInterval(moveRandomCharacter, 2000);
 
+    const config = {
+      type: Phaser.AUTO,
+      width: screenHeight * 1.77777, //1600 / 2,
+      height: screenHeight, //((1600 / 1920) * 1080) / 2,
+      test: "VirtualEnv",
+      scene: new GameScene(
+        projectId,
+        "https://firebasestorage.googleapis.com/v0/b/ghack-cf0c2.appspot.com/o/picture.png?alt=media&token=a14a189f-e550-4660-9f40-fe20e65dc99b",
+        userId,
+        members
+      ),
+      physics: {
+        default: "arcade",
+        arcade: {
+          gravity: { y: 0 },
+          debug: false,
+        },
+      },
+    };
+
+    const game = new Phaser.Game(config);
+    setLoading(false);
     return () => {
-      returnFunc();
+      // returnFunc();
+
+      game.destroy(true);
       window.dispatchEvent(new CustomEvent("gameScenceDestroyed"));
     };
   }, []);

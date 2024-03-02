@@ -3,7 +3,6 @@ import Phaser from "phaser";
 class RoomsManager {
   constructor(scene) {
     this.scene = scene;
-    console.log("Scene: ", scene);
     const calculatePoints = (x, y) => {
       return new Phaser.Geom.Point(
         (this.scene.game.config.width * x) / 800,
@@ -133,8 +132,6 @@ class RoomsManager {
 
     return graphics;
   }
-
-  checkRoomClicked(x, y) {}
 }
 
 export default RoomsManager;

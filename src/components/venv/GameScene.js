@@ -93,9 +93,14 @@ class GameScene extends Phaser.Scene {
     for (var member of this.members) {
       this.load.image(member.id, member.imageSrc);
     }
+    // this.load.image(
+    //   "testUrl",
+    //   "https://storage.googleapis.com/ghack-cf0c2.appspot.com/1709157923Group%201000003516.png"
+    // );
   }
 
   create() {
+    // this.add.image(400, 300, "testUrl");
     this.roomsManager = new RoomsManager(this);
     this.cameras.main.setBackgroundColor(0xdae9fc);
     // Create a fixed background
