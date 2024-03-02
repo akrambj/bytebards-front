@@ -15,7 +15,7 @@ const Avatar = () => {
   const [loading, setLoading] = useState(false);
 
   return (
-    <section className="w-screen h-screen overflow-hidden flex items-center justify-center flex flex-col gap-[4vh]">
+    <section className="w-screen h-screen overflow-hidden flex items-center justify-center flex-col gap-[4vh]">
         <div className="flex flex-col gap-[2vh] items-center">
           <h2 className="text-[2.6rem] font-bold text-Typo text-center">
           One Step Left
