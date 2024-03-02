@@ -23,6 +23,8 @@ function Venv() {
   const [isLoading, setIsLoading] = useState(true);
   const { projectID } = useParams();
   const serverUrl = "wss://hoffice-svuyj7ly.livekit.cloud";
+  const baseUrl = "https://436d-41-111-189-195.ngrok-free.app";
+  // "https://0b02-41-111-189-195.ngrok-free.app";
 
   // Change this to your own project ID
   //   const projectID = localStorage.getItem('projectID');W
@@ -32,19 +34,18 @@ function Venv() {
   const backendRoute =
     // "https://ghack-backend.onrender.com/projects/" +
     // "http://localhost:3000/projects/"
-    "https://4e32-41-111-189-195.ngrok-free.app/projects/" +
-    projectID +
-    "/chatrooms";
+    baseUrl + "/projects/" + projectID + "/chatrooms";
 
   async function fetchMembers() {
     const projectMembers = await axios.get(
       // `https://ghack-backend.onrender.com/projects/`
       // "http://localhost:3000/projects/"
-      "https://4e32-41-111-189-195.ngrok-free.app/projects/" + projectID,
+      baseUrl + "/projects/" + projectID,
       {
         headers: {
           Authorization: `Bearer ${authToken}`,
           "ngrok-skip-browser-warning": true,
+          "Access-Control-Allow-Origin": true,
         },
       }
     );
@@ -57,6 +58,7 @@ function Venv() {
           headers: {
             Authorization: `Bearer ${authToken}`,
             "ngrok-skip-browser-warning": true,
+            "Access-Control-Allow-Origin": true,
           },
         });
 
@@ -74,15 +76,13 @@ function Venv() {
         setMembers(await fetchMembers());
         setUserId(
           (
-            await axios.get(
-              "https://4e32-41-111-189-195.ngrok-free.app/user/profile",
-              {
-                headers: {
-                  Authorization: `Bearer ${authToken}`,
-                  "ngrok-skip-browser-warning": true,
-                },
-              }
-            )
+            await axios.get(baseUrl + "/user/profile", {
+              headers: {
+                Authorization: `Bearer ${authToken}`,
+                "ngrok-skip-browser-warning": true,
+                "Access-Control-Allow-Origin": true,
+              },
+            })
           ).data.user.id
         );
         // setIsLoading(false);

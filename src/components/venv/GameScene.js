@@ -44,6 +44,11 @@ class GameScene extends Phaser.Scene {
     socket.on("updatePosition", (data) =>
       this.charactersManager.updatePisitionHandler(data)
     );
+    try {
+      socket.connect();
+    } catch (error) {
+      console.log("error connecting to socket: ", error);
+    }
   }
 
   randomColorGenerator() {
