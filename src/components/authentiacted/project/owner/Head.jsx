@@ -7,9 +7,9 @@ const Head = ({ project }) => {
   const [addParticipant, setAddParticipant] = useState(false);
 
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between ">
       <h2 className="text-4xl capitalize text-[#0B3558] font-bold">
-        Green Wave Project
+        {project.name}
       </h2>
       <div className="relative flex items-center -gap-5">
         {project?.members?.map((member) => (
@@ -20,17 +20,21 @@ const Head = ({ project }) => {
             alt={member.firstname}
           />
         ))}
-        <div
-          className=" w-[40px] h-[40px] rounded-full flex items-center justify-center bg-[#A6BBD1] cursor-pointer"
-          onClick={() => setAddParticipant(!addParticipant)}
-        >
-          <IoIosAdd className="text-white text-2xl" />
-        </div>
-        {addParticipant && (
-          <AddParticipant
-            project={project}
-            setAddParticipant={setAddParticipant}
-          />
+        {project.status === "OWNER" && (
+          <>
+            <div
+              className=" w-[40px] h-[40px] rounded-full flex items-center justify-center bg-[#A6BBD1] cursor-pointer"
+              onClick={() => setAddParticipant(!addParticipant)}
+            >
+              <IoIosAdd className="text-white text-2xl" />
+            </div>
+            {addParticipant && (
+              <AddParticipant
+                project={project}
+                setAddParticipant={setAddParticipant}
+              />
+            )}
+          </>
         )}
       </div>
     </div>

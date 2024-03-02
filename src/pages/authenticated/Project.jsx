@@ -58,9 +58,9 @@ const Project = () => {
           {project.status === "OWNER" ? (
             <OwnerProject project={project} />
           ) : project.status === "MANAGER" ? (
-            <ManagerProject />
+            <ManagerProject project={project} />
           ) : (
-            <EmployeeProject />
+            <EmployeeProject project={project} />
           )}
         </>
       )}
