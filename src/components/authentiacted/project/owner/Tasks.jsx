@@ -95,8 +95,8 @@ const Tasks = ({ project }) => {
   };
 
   return (
-    <section className="bg-Typo" >
-      <KanbanBoard />
+    <section className="bg-Typo">
+      <KanbanBoard className="bg-white" />
     </section>
   );
 };

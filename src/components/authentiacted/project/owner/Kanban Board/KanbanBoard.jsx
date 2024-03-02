@@ -186,15 +186,15 @@ function KanbanBoard() {
     }
   }
 
-
-function generateId() {
-  /* Generate a random number between 0 and 10000 */
-  return Math.floor(Math.random() * 10001);
-}
+  function generateId() {
+    /* Generate a random number between 0 and 10000 */
+    return Math.floor(Math.random() * 10001);
+  }
 
   return (
     <div
       className="
+        text-black
         m-auto
         flex
         min-h-screen
@@ -203,19 +203,22 @@ function generateId() {
         overflow-x-auto
         overflow-y-hidden
         px-[40px]
-    "
+        bg-white
+      "
     >
       <DndContext
+        className="bg-slate-500 text-black"
         sensors={sensors}
         onDragStart={onDragStart}
         onDragEnd={onDragEnd}
         onDragOver={onDragOver}
       >
-        <div className="m-auto flex gap-4">
-          <div className="flex gap-4">
-            <SortableContext items={columnsId}>
+        <div className="m-auto flex gap-4 text-black">
+          <div className="flex gap-4 text-black">
+            <SortableContext className="text-black" items={columnsId}>
               {columns.map((col) => (
                 <ColumnContainer
+                  className="bg-gray-200 text-black"
                   key={col.id}
                   column={col}
                   deleteColumn={deleteColumn}
@@ -233,30 +236,32 @@ function generateId() {
               createNewColumn();
             }}
             className="
-      h-[60px]
-      w-[350px]
-      min-w-[350px]
-      cursor-pointer
-      rounded-lg
-      bg-mainBackgroundColor
-      border-2
-      border-columnBackgroundColor
-      p-4
-      ring-rose-500
-      hover:ring-2
-      flex
-      gap-2
-      "
+            h-[60px]
+            w-[350px]
+            text-black
+            min-w-[350px]
+            cursor-pointer
+            rounded-lg
+            bg-gray-400
+            border-2
+            border-[#BFB7F1]
+            p-4
+            ring-rose-500
+            hover:ring-2
+            flex
+            gap-2
+            "
           >
-            <PlusIcon />
+            <PlusIcon className="bg-slate-400 text-black" />
             Add Column
           </button>
         </div>
 
         {createPortal(
-          <DragOverlay>
+          <DragOverlay className="bg-slate-200 text-black">
             {activeColumn && (
               <ColumnContainer
+                className="bg-slate-500 text-black"
                 column={activeColumn}
                 deleteColumn={deleteColumn}
                 updateColumn={updateColumn}
@@ -270,6 +275,7 @@ function generateId() {
             )}
             {activeTask && (
               <TaskCard
+                className="bg-slate-900 focus:text-black text-black"
                 task={activeTask}
                 deleteTask={deleteTask}
                 updateTask={updateTask}
@@ -282,8 +288,8 @@ function generateId() {
     </div>
   );
 
-function generateId() {
-  return Math.floor(Math.random() * 10001);
-}
+  function generateId() {
+    return Math.floor(Math.random() * 10001);
+  }
 }
 export default KanbanBoard;
