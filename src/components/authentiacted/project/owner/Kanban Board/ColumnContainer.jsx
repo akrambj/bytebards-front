@@ -47,7 +47,7 @@ function ColumnContainer({
         ref={setNodeRef}
         style={style}
         className="
-      bg-columnBackgroundColor
+      bg-slate-400
       opacity-40
       border-2
       border-pink-500
