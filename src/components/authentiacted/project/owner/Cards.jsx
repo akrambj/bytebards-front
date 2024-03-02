@@ -31,7 +31,7 @@ const Cards = ({ project, statistics }) => {
   }, [statistics]);
   console.log(statistics?.members?.length, "fsdfsa");
   return (
-    <div className="flex items-center justify-center gap-10">
+    <div className="flex items-center justify-between">
       {cards.map((card, index) => (
         <Card key={index} card={card} />
       ))}

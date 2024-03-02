@@ -3,7 +3,7 @@ const Card = ({ card }) => {
   return (
     <div
       style={{ borderColor: card.color }}
-      className="w-[25%] px-3 py-5 h-[140px] bg-white shadow-md drop-shadow-lg flex flex-col gap-5 border-l-[12px] rounded-lg"
+      className="w-[13vw] px-3 py-5 h-[15vh] bg-white drop-shadow-card flex flex-col gap-5 border-l-[16px] rounded-lg"
     >
       <h2
         style={{ color: card.color }}

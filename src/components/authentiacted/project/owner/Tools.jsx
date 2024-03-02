@@ -7,8 +7,8 @@ const Tools = ({ project }) => {
   const [isCordinatorOpen, setIsConrdinator] = useState(false);
   return (
     <section className="w-full flex flex-col gap-4 ">
-      <div className="">
-        <h4 className="px-4 w-[160px] py-2 rounded-lg text-white text-lg capitalize font-bold bg-[#66DC90] ">
+      <div className="w-[12%]">
+        <h4 className="px-4  py-2 rounded-[24px] flex justify-center items-center text-white text-lg capitalize font-bold bg-[#66DC90] ">
           Tools Manager
         </h4>
       </div>

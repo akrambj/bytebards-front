@@ -75,7 +75,7 @@ const Project = () => {
     console.log(statistics, "dsadf");
   }, []);
   return (
-    <section className="w-screen flex flex-col gap-10">
+    <section className="w-screen flex flex-col gap-10 my-[20vh]">
       {project && (
         <>
           {project.status === "OWNER" ? (

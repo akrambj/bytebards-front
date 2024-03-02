@@ -101,12 +101,12 @@ const Tasks = ({ project }) => {
   return (
     <section className="flex flex-col gap-4">
       <div className="flex items-center">
-        <h4 className="px-6 py-2 rounded-lg bg-[#BFB7F1] text-white">
+        <h4 className="px-4  py-2 rounded-[24px] flex justify-center items-center text-white text-lg capitalize font-bold bg-[#BFB7F1]">
           Task Manager
         </h4>
         <button className="px-6 py-1 rounded-xl rounded-l-none bg-[#E5E2F9] text-[#0B3558] flex items-center gap-2 ">
           <img src={profile} className="w-8" alt="" />
-          <h4 className="font-bold">karin</h4>
+          <h4 className="font-bold">karim</h4>
           <MdKeyboardArrowDown />
         </button>
       </div>

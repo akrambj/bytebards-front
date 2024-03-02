@@ -7,7 +7,7 @@ import FileStorage from "./owner/FileStorage";
 
 const OwnerProject = ({ project, statistics }) => {
   return (
-    <div className="flex flex-col gap-10 px-16">
+    <div className="flex flex-col gap-[13vh] px-[10vw]">
       <Head project={project} />
       <Cards project={project} statistics={statistics} />
       <Statistics project={project} />

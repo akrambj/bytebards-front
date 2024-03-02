@@ -145,16 +145,8 @@ const AddProject = ({ setAddProject, setProjects }) => {
 
           <div className="flex gap-[12px] flex-col w-[100%]">
             <p className="font-medium text-Typo">Deadline</p>
-            <Input
-              type="date"
-              placeholder="Project Name"
-              name="deadline"
-              value={formData.deadline}
-              onChange={handleChange}
-              width="100%"
-              display={"none"}
-              disabled={loading}
-            />
+            
+            <input className="w-[100%] h-[7vh] rounded-[24px] px-10 border-Gray66 border-2" type="date" name="deadline" id="" />
             {error && <p className="text-red-500">{error}</p>}
           </div>
 
